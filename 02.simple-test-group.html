@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2.simple-test-group.html</title>
+	<script>
+	(function() {
+		var results;
+		this.assert = function assert (value, desc) {
+			var li = document.createElement("li");
+			li.className = value ? "pass" : "fail";
+			li.appendChild(document.createTextNode(desc));
+			results.appendChild(li);
+			if(!value) {
+				li.parentNode.parentNode.className = "fail";
+			};
+			return li;
+		};
+		this.test = function test(name, fn) {
+			results = document.getElementById("results");
+			results = assert(true, name).appendChild(document.createElement("ul"));
+			fn();
+		};
+	} )();
+
+	window.onload = function () {
+		test("test A", function () {
+			assert (true, "First assert done");
+			assert (true, "Second assert done");
+			assert (true, "Third assert done");
+		});
+		test("test B", function () {
+			assert (true, "First test done");
+			assert (false, "Second test failed");
+			assert (true, "Third test done");
+		});
+		test("test C", function () {
+			assert (null, "fail");
+			assert (5, "pass");
+		});
+	};
+	</script>
+	<style>
+	.pass {
+		color: green;
+	}
+	.fail {
+		color: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="results"></div>
+</body>
+</html>

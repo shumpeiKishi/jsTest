@@ -1,0 +1,11 @@
+{
+  "name": "WebServer",
+  "version": "0.0.1",
+  "description": "WAMP replacement",
+  "author": "Dan BROOKS",
+  "license": "BSD",
+  "dependencies": {
+    "connect": "2.19.x",
+    "connect-route": "0.1.x"
+  }
+}
